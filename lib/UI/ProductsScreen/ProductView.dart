@@ -32,10 +32,10 @@ class ProductView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
-              height: 33,  // Set the height to 33 pixels
+              height: 33,
               child: TextField(
                 onChanged: (value) {
-                  productViewModel.searchProducts(value); // Call search method on text change
+                  productViewModel.searchProducts(value);
                 },
                 decoration: InputDecoration(
                   labelText: 'Search Products',
@@ -43,7 +43,7 @@ class ProductView extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 8), // Adjust vertical padding to center text within the TextField
+                  contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 ),
               ),
             ),
@@ -54,7 +54,7 @@ class ProductView extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                ' ${productViewModel.products.length} results found', // This shows the count of products fetched
+                ' ${productViewModel.products.length} results found',
                 style: GoogleFonts.poppins(fontSize: 10,color: Colors.grey),
               ),
             ),

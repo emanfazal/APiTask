@@ -16,7 +16,6 @@ class ProductViewModel extends ChangeNotifier {
   String get errorMessage => _errorMessage;
 
   ProductViewModel() {
-    // Automatically fetch products when the view model is instantiated
     fetchProducts();
   }
 
@@ -33,7 +32,7 @@ class ProductViewModel extends ChangeNotifier {
         _products = (data['products'] as List)
             .map((e) => Products.fromJson(e))
             .toList();
-        _filteredProducts = List.from(_products); // Set the filtered list initially
+        _filteredProducts = List.from(_products);
       } else {
         _errorMessage = 'Failed to load products. Status Code: ${response.statusCode}';
       }
@@ -45,16 +44,15 @@ class ProductViewModel extends ChangeNotifier {
     }
   }
 
-  // Method to update the search query and filter products
   void searchProducts(String query) {
     _searchQuery = query;
     if (query.isEmpty) {
-      _filteredProducts = List.from(_products); // Reset to original products when query is empty
+      _filteredProducts = List.from(_products);
     } else {
       _filteredProducts = _products.where((product) {
         return product.title != null && product.title!.toLowerCase().contains(query.toLowerCase());
       }).toList();
     }
-    notifyListeners(); // Notify listeners to update the UI
+    notifyListeners();
   }
 }
