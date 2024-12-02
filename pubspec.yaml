@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.2
   sizer: ^3.0.4
   http: ^1.2.2
+  google_fonts: ^6.2.1
 
 
 dev_dependencies:

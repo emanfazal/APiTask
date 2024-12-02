@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/Assets.dart';
@@ -35,15 +36,11 @@ class SplashScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 50),
                   child: Text(
                     'My Store',
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: GoogleFonts.playfairDisplay(fontSize: 35,color: Colors.black ,fontWeight: FontWeight.bold)
                   ),
                 ),
              Spacer(),
-               Text('Valkommen',style: TextStyle(
+               Text('Valkommen',style: GoogleFonts.poppins(
                  fontSize: 20,
                  color: Colors.white,
                  fontWeight: FontWeight.bold
@@ -53,7 +50,7 @@ class SplashScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text('Hos ass kan du baka tid has nastan alla Sveriges salonger och motagningar. Baka frisor, massage, skonhetsbehandingar, friskvard och mycket mer.',textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white,
+                      style: GoogleFonts.poppins(color: Colors.white,
                       fontWeight: FontWeight.w400),),
                   ),
                 ),

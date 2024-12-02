@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import '../../Model/ProductsModel.dart';
 
@@ -55,7 +56,7 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 1,
+      elevation: 0,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -77,30 +78,41 @@ class ProductCardWidget extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             // Product Title
-            Text(
-              product.title ?? 'No title',
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
             Row(
               children: [
+                Text(
+                  product.title ?? 'No title',
+                  style: GoogleFonts.poppins(fontSize:14,color: Colors.black,fontWeight: FontWeight.bold)
+                ),
+                const Spacer(),
                 // Price
                 Text(
                   '\$${product.price != null ? product.price!.toStringAsFixed(2) : 'N/A'}',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.green,
+                    color: Colors.black,
                   ),
                 ),
-                const Spacer(),
-                // Rating
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+
                 Row(
                   children: [
-                    const Icon(Icons.star, color: Colors.orange, size: 16),
+                    // Loop through the rating and show the appropriate number of filled and empty stars
+                    for (int i = 1; i <= 5; i++)
+                      Icon(
+                        i <= (product.rating ?? 0).floor()
+                            ? Icons.star // Filled star
+                            : i == (product.rating ?? 0).floor() + 1 && (product.rating! % 1 != 0)
+                            ? Icons.star_half // Half star if the rating has a decimal part
+                            : Icons.star_border, // Empty star
+                        color: Colors.orange,
+                        size: 16,
+                      ),
                     const SizedBox(width: 4),
                     Text(
                       product.rating != null
@@ -110,23 +122,21 @@ class ProductCardWidget extends StatelessWidget {
                     ),
                   ],
                 ),
+
+
+
               ],
             ),
             const SizedBox(height: 8),
             // Brand and Category
             Text(
               'By ${product.brand ?? 'Unknown'}',
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
+              style: GoogleFonts.poppins(fontSize: 14,color: Colors.grey)
             ),
+            SizedBox(height: 30,),
             Text(
               'In ${product.category ?? 'Uncategorized'}',
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
+              style: GoogleFonts.poppins(fontSize: 14,color: Colors.black)
             ),
           ],
         ),
