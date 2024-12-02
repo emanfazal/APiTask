@@ -21,9 +21,29 @@ class ProductView extends StatelessWidget {
         children: [
           Row(
             children: [
-              TextField(),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search...', // Optional hint text
+                    prefixIcon: Icon(Icons.search), // Search icon inside the text field
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12), // Rounded corners
+                      borderSide: BorderSide(color: Colors.grey), // Border color
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.blue), // Border color when focused
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: Colors.grey), // Border color when not focused
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
+
           productViewModel.isLoading
               ? const Center(child: CircularProgressIndicator()) // Show loading spinner
               : productViewModel.products.isEmpty
